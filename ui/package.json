@@ -1,0 +1,19 @@
+{
+  "name": "ai-learning-platform-ui",
+  "version": "1.0.0",
+  "description": "An AI-powered learning platform where artificial intelligence acts as your personal tutor, delivering content and learning alongside you.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogan297/ai-learning-platform.git"
+  },
+  "author": "rogan297",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rogan297/ai-learning-platform/issues"
+  },
+  "homepage": "https://github.com/rogan297/ai-learning-platform#readme"
+}
