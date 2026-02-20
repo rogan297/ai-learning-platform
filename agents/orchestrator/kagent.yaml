@@ -1,0 +1,7 @@
+agentName: orchestrator
+language: python
+framework: adk
+modelProvider: gemini
+modelName: gemini-2.0-flash
+description: ""
+updatedAt: 2026-02-11T17:32:27.552575076-03:00

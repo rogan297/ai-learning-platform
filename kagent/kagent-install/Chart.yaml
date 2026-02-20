@@ -1,0 +1,14 @@
+apiVersion: v2
+dependencies:
+- condition: kmcp.enabled
+  name: kmcp
+  repository: oci://ghcr.io/kagent-dev/kmcp/helm
+  version: 0.2.2
+- condition: kagent-tools.enabled
+  name: kagent-tools
+  repository: oci://ghcr.io/kagent-dev/tools/helm
+  version: 0.0.13
+description: A Helm chart for kagent, built with Google ADK
+name: kagent
+type: application
+version: 0.7.13

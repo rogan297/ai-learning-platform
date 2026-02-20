@@ -1,0 +1,16 @@
+apiVersion: agentgateway.dev/v1alpha1
+kind: AgentgatewayBackend
+metadata:
+  name: "{{ .Values.mcp_svc_name }}"
+  namespace: agentgateway-system
+spec:
+  mcp:
+    targets:
+    - name: mcp-target
+      static:
+        host: "{{ .Values.mcp_svc_name }}.kagent.svc.cluster.local"
+        port: 3050
+        path: /mcp/
+        policies:
+          tls:
+            sni: api.githubcopilot.com

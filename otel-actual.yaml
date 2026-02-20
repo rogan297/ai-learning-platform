@@ -1,0 +1,44 @@
+USER-SUPPLIED VALUES:
+config:
+  exporters:
+    debug:
+      verbosity: detailed
+    otlp/tempo:
+      endpoint: http://tempo.telemetry.svc.cluster.local:4317
+      tls:
+        insecure: true
+    otlphttp:
+      endpoint: http://loki.telemetry.svc.cluster.local:3100/otlp
+      tls:
+        insecure: true
+  processors:
+    batch:
+      send_batch_size: 1024
+      timeout: 10s
+  receivers:
+    otlp:
+      protocols:
+        grpc:
+          endpoint: 0.0.0.0:4317
+        http:
+          endpoint: 0.0.0.0:4318
+  service:
+    pipelines:
+      logs:
+        exporters:
+        - debug
+        - otlphttp
+        processors:
+        - batch
+        receivers:
+        - otlp
+      traces:
+        exporters:
+        - otlp/tempo
+        processors:
+        - batch
+        receivers:
+        - otlp
+image:
+  repository: otel/opentelemetry-collector
+mode: deployment

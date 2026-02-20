@@ -1,0 +1,23 @@
+name: mcp-agent-control-plane
+framework: fastmcp-python
+version: 0.1.0
+description: An MCP server that orchestrates multiple agents, delegates tasks, and monitors agent operability, health, and execution status across distributed workflows.
+author: Rogelio Rojas
+email: rogelioernesto_3@hotmail.com
+secrets:
+    local:
+        enabled: false
+        provider: env
+        file: .env.local
+    production:
+        enabled: false
+        provider: kubernetes
+        secretName: mcp-agent-control-plane-secrets-production
+        namespace: mcp
+    staging:
+        enabled: false
+        provider: kubernetes
+        secretName: mcp-agent-control-plane-secrets-staging
+        namespace: mcp
+created_at: 2026-02-10T06:51:40.343371788-03:00
+updated_at: 2026-02-10T06:51:40.346128871-03:00

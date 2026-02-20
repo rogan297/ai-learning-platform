@@ -1,0 +1,22 @@
+apiVersion: agentgateway.dev/v1alpha1
+kind: AgentgatewayPolicy
+metadata:
+  name: politica-mantenimiento
+  namespace: agentgateway-system
+spec:
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: test-route
+
+  traffic:
+    directResponse:
+      status: 200
+      body: 'ok'
+
+
+    headerModifiers:
+      response:
+        set:
+          - name: "X-Gateway-Source"
+            value: "AgentGateway-Policy"

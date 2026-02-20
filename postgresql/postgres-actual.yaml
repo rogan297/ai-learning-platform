@@ -1,0 +1,19 @@
+USER-SUPPLIED VALUES:
+auth:
+  enablePostgresUser: true
+  postgresPassword: postgres
+primary:
+  extraVolumeMounts:
+  - mountPath: /certs
+    name: tls
+    readOnly: true
+  extraVolumes:
+  - name: tls
+    secret:
+      secretName: postgres-tls
+tls:
+  certCAFilename: ca.crt
+  certFilename: tls.crt
+  certKeyFilename: tls.key
+  certificatesSecret: postgres-tls
+  enabled: true

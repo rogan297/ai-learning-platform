@@ -1,0 +1,9 @@
+USER-SUPPLIED VALUES:
+persistence:
+  enabled: false
+tempo:
+  receivers:
+    otlp:
+      protocols:
+        grpc:
+          endpoint: 0.0.0.0:4317

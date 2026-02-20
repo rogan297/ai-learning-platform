@@ -1,0 +1,75 @@
+# Multi-stage build for mcp-agent-control-plane MCP server using uv
+FROM python:3.11-slim AS builder
+
+# Install uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+
+# Set working directory
+WORKDIR /app
+
+# Copy dependency files first for layer caching
+COPY pyproject.toml .python-version ./
+COPY README.md ./
+
+# Copy lockfile if it exists, otherwise generate it
+COPY uv.loc[k] ./
+RUN if [ -f uv.lock ]; then \
+        echo "Using existing lockfile"; \
+        uv sync --frozen --no-dev --no-cache; \
+    else \
+        echo "Generating lockfile and installing dependencies"; \
+        uv sync --no-dev --no-cache; \
+    fi
+
+# Copy source code
+COPY src/ ./src/
+COPY kmcp.yaml ./
+COPY agent-template.yaml ./
+
+
+# Production stage
+FROM python:3.11-slim
+
+# Install uv in production
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+
+# Create non-root user
+RUN groupadd -r mcpuser && useradd -r -g mcpuser mcpuser
+
+# Set working directory
+WORKDIR /app
+
+# Copy virtual environment and application from builder
+COPY --from=builder /app/.venv ./.venv
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/kmcp.yaml ./kmcp.yaml
+COPY --from=builder /app/pyproject.toml ./pyproject.toml
+COPY --from=builder /app/agent-template.yaml ./agent-template.yaml
+
+# Make sure scripts in .venv are usable
+ENV PATH="/app/.venv/bin:$PATH"
+
+# Install runtime dependencies only
+RUN apt-get update && apt-get install -y \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Change ownership to non-root user
+RUN chown -R mcpuser:mcpuser /app
+
+# Switch to non-root user
+USER mcpuser
+
+# Expose port (if needed for HTTP transport)
+EXPOSE 3050
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python -c "import src.main; print('healthy')"
+
+# Set environment variables
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+
+# Default command
+CMD ["python", "src/main.py"] 
