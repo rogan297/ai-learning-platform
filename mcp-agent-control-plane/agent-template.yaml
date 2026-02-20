@@ -38,4 +38,4 @@ spec:
               name: postgres-tls
               key: tls.key
         - name: OPENAI_API_KEY
-          value: YOUR_KEY
+          value: "your-token"

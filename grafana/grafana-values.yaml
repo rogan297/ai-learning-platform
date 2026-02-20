@@ -1,0 +1,23 @@
+persistence:
+  type: pvc
+  enabled: true
+  accessModes:
+    - ReadWriteOnce
+  size: 1Gi
+
+adminUser: admin
+adminPassword: admin
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+    - name: Loki
+      type: loki
+      url: http://loki.telemetry.svc.cluster.local:3100
+      access: proxy
+      isDefault: true
+    - name: Tempo
+      type: tempo
+      url: http://tempo.telemetry.svc.cluster.local:3100
+      access: proxy

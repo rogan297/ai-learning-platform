@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  orchestrator-agent:
+    build:
+      context: ./agents/orchestrator/
+    image: agent/custom/orchestrator:0.1.0
+
+  template-agent:
+    build:
+      context: ./agents/template-agent/
+    image: agent/custom/template-agent:0.1.0
+
+  mcp-server:
+    build:
+      context: ./mcp-agent-control-plane
+    image: mcp-agent-control-plane:0.1.0

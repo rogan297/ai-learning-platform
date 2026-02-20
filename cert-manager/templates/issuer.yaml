@@ -1,0 +1,33 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: kagent-ca-issuer
+  namespace: database
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: kagent-ca
+  namespace: database
+spec:
+  isCA: true
+  commonName: kagent-ca
+  secretName: kagent-ca-secret
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: kagent-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: postgres-issuer
+  namespace: database
+spec:
+  ca:
+    secretName: kagent-ca-secret
