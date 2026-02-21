@@ -15,27 +15,12 @@ spec:
       image: agent/custom/template-agent:0.1.0
       env:
         - name: DB_URI
-          value: "postgresql://postgres:postgres@postgres.database.svc.cluster.local:5432/ai_platform_core?sslmode=verify-ca"
+          value: "postgresql://postgres:postgres@postgres.database.svc.cluster.local:5432/ai_platform_core"
         - name: AGENT_HOST
           value: "0.0.0.0"
         - name: AGENT_PORT
           value: "8080"
         - name: AGENT_NAME
           value: "{{ name }}"
-        - name: DB_CA_CONTENT
-          valueFrom:
-            secretKeyRef:
-              name: postgres-tls
-              key: ca.crt
-        - name: DB_CERT_CONTENT
-          valueFrom:
-            secretKeyRef:
-              name: postgres-tls
-              key: tls.crt
-        - name: DB_KEY_CONTENT
-          valueFrom:
-            secretKeyRef:
-              name: postgres-tls
-              key: tls.key
         - name: OPENAI_API_KEY
           value: "your-token"

@@ -36,45 +36,10 @@ logger = logging.getLogger(__name__)
 @asynccontextmanager
 async def get_db_resources():
     db_uri = os.getenv("DB_URI")
-    ca_content = os.getenv("DB_CA_CONTENT")
-    cert_content = os.getenv("DB_CERT_CONTENT")
-    key_content = os.getenv("DB_KEY_CONTENT")
 
     logger.info("Initializing database resource connection...")
 
-    if ca_content and cert_content and key_content:
-        try:
-            cert_dir = "/tmp/db_certs"
-            os.makedirs(cert_dir, exist_ok=True)
-
-            paths = {
-                "ca": os.path.join(cert_dir, "ca.crt"),
-                "cert": os.path.join(cert_dir, "tls.crt"),
-                "key": os.path.join(cert_dir, "tls.key")
-            }
-
-            with open(paths["ca"], "w") as f:
-                f.write(ca_content)
-            with open(paths["cert"], "w") as f:
-                f.write(cert_content)
-            with open(paths["key"], "w") as f:
-                f.write(key_content)
-
-            os.chmod(paths["key"], 0o600)
-            logger.info(f"Certificates written successfully to {cert_dir}")
-
-            if "sslrootcert" not in db_uri:
-                db_uri += f"&sslrootcert={paths['ca']}&sslcert={paths['cert']}&sslkey={paths['key']}&sslmode=verify-full"
-
-        except Exception as e:
-            logger.exception("Failed to write database certificates to disk")
-            raise
-
     connection_kwargs = {
-        "sslmode": "verify-ca",
-        "sslrootcert": "/tmp/db_certs/ca.crt",
-        "sslcert": "/tmp/db_certs/tls.crt",
-        "sslkey": "/tmp/db_certs/tls.key",
         "autocommit": True
     }
 

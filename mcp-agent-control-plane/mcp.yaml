@@ -18,6 +18,3 @@ spec:
       PORT: "3050"
       HOST: "0.0.0.0"
       MCP_TRANSPORT_MODE: "http"
-      DB_URI: "postgresql://postgres:postgres@postgres.database.svc.cluster.local:5432/ai_platform_core?sslmode=verify-full"
-    secretRefs:
-      - name: postgres-tls

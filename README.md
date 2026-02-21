@@ -59,13 +59,6 @@ kubectl port-forward svc/keycloak -n keycloak 8080:8080
 
 # Database
 helm upgrade --install postgres ./postgresql -n database --create-namespace
-
-# Certificate Manager
-helm upgrade --install cert-manager ./cert-manager \
-  -n cert-manager \
-  --create-namespace \
-  --set installCRDs=true \
-  --wait
 ```
 
 5. Deploy the LGTM stack (Loki, Grafana, Tempo) and OpenTelemetry for monitoring and auditing.
@@ -110,4 +103,4 @@ kubectl port-forward svc/grafana -n telemetry 3000:80
 
 # Kagent User Interfaz
 kubectl port-forward -n kagent service/kagent-ui 8082:8080
-``` 
+```
