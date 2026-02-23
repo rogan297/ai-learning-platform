@@ -12,12 +12,12 @@ spec:
     jwtAuthentication:
       mode: Strict
       providers:
-      - issuer: "http://keycloak.keycloak.svc.cluster.local:8080/realms/{{ .Values.keycloak_realm }}"
+      - issuer: "http://keycloak.keycloak.svc.cluster.local:8080/realms/{{ .Values.auth.keycloak.realm }}"
         audiences:
-          - {{ .Values.jwt_audiencepolicy | quote }}
+          - {{ .Values.auth.jwt.audience | quote }}
         jwks:
           remote:
-            jwksPath: "/realms/{{ .Values.keycloak_realm }}/protocol/openid-connect/certs"
+            jwksPath: "/realms/{{ .Values.auth.keycloak.realm }}/protocol/openid-connect/certs"
             cacheDuration: "5m"
             backendRef:
               group: ""

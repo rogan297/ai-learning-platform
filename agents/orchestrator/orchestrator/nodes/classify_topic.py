@@ -37,6 +37,8 @@ async def classify_topic(state: dict, model):
 
     last_ai_message = next((m for m in reversed(messages[:-1]) if isinstance(m, AIMessage)), None)
 
+    user_lang = langdetect.detect(user_content)
+
     forced_topic = None
     if last_ai_message and ("**" in last_ai_message.content or ":" in last_ai_message.content):
         options = [line.strip().replace("**", "") for line in last_ai_message.content.split('\n') if
@@ -56,7 +58,7 @@ async def classify_topic(state: dict, model):
             content="User selected a suggested option from the menu."
         )
     else:
-        user_lang = state.get("user_lang", "en")  # Usar el lenguaje guardado o detectar
+
         structured_model = model.with_structured_output(TopicEval)
 
         system_prompt = f"""STRICT Topic Classifier.
@@ -94,5 +96,6 @@ async def classify_topic(state: dict, model):
     return {
         "messages": messages_out,
         "topic_eval": response,
-        "stimulus_count": 0 if response.topic_found else state.get("stimulus_count", 0) + 1
+        "stimulus_count": 0 if response.topic_found else state.get("stimulus_count", 0) + 1,
+        "user_lang": user_lang
     }

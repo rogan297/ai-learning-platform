@@ -53,8 +53,8 @@ kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/downloa
 # Identity Provider
 helm upgrade --install keycloak ./keycloak -n keycloak --create-namespace
 
-# IMPORTANT: At this stage, manually create users and the Keycloak Realm.
-# See the ui
+# NOTE: You must manually create users and the Keycloak Realm.
+# Access the UI via port-forward:
 kubectl port-forward svc/keycloak -n keycloak 8080:8080
 
 # Database
@@ -77,12 +77,15 @@ helm upgrade --install grafana ./grafana -n telemetry --create-namespace \
   --set assertNoLeakedSecrets=false
 ```
 
-6. Finally, deploy the gateway and the custom agent.
+6. Finally, deploy the gateway and the custom learning agents.
 ``` bash
 # Install Agent Gateway
 helm upgrade --install agentgateway ./agentgateway/agentgateway-install \
   -n agentgateway-system \
-  --create-namespace
+  --create-namespace \
+  --set auth.keycloak.realm="agent-realm" \
+  --set auth.jwt.audience="agent-client" \
+  --set controlPlane.serviceName="mcp-agent-control-plane"
 
 # Build and Load Local Image (for Kind environments)
 docker compose build
@@ -92,6 +95,12 @@ kind load docker-image agent/custom/orchestrator:0.1.0 agent/custom/template-age
 helm upgrade --install kagent ./kagent/kagent-install \
   -n kagent \
   --create-namespace
+  
+# Monitor the MCP server status
+kubectl get pod -n kagent -w
+
+# Create the agent
+kubectl apply -f agents/orchestrator/agent.yaml
 ```
 7. Once the deployment is complete, you can verify the status of the components and start using the platform.
 

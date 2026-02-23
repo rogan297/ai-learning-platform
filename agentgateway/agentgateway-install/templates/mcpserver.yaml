@@ -14,7 +14,7 @@ spec:
   - backendRefs:
     - group: agentgateway.dev
       kind: AgentgatewayBackend
-      name: "{{ .Values.mcp_svc_name  }}"
+      name: "{{ .Values.controlPlane.serviceName }}"
       weight: 1
     matches:
     - path:

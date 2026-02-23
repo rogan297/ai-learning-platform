@@ -3,7 +3,7 @@ from langchain_core.messages import HumanMessage, SystemMessage
 
 async def generate_user_prompt(state, model):
     """Generate a topic suggestion prompt when user input lacks specific topic."""
-    user_lang = getattr(state.get("topic_eval", {}), "user_lang", "es")
+    user_lang = getattr(state.get("topic_eval", {}), "user_lang", "en")
 
     system_prompt = f"""You are a Technical Learning Curator. Since the user hasn't specified a topic, your goal is to present a structured 'Learning Menu' with high-impact, specific niches to spark their interest.
 

@@ -14,3 +14,18 @@ rules:
 - apiGroups: ["rbac.authorization.k8s.io"]
   resources: ["roles", "rolebindings"]
   verbs: ["get", "list", "create", "update"]
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: mcp-agent-manager-binding
+subjects:
+- kind: ServiceAccount
+  name: mcp-agent-control-plane
+  namespace: kagent
+roleRef:
+  kind: ClusterRole
+  name: mcp-agent-manager-role
+  apiGroup: rbac.authorization.k8s.io

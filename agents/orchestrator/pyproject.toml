@@ -26,5 +26,4 @@ dependencies = [
     "opentelemetry-instrumentation-openai>=0.52.3",
     "opentelemetry-sdk>=1.39.1",
     "psycopg[binary,pool]>=3.3.2",
-
 ]

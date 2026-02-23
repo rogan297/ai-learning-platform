@@ -120,6 +120,11 @@ discoveryNamespaceSelectors: []
 #        namespace: kgateway-system
 gatewayClassParametersRefs: {}
 
-keycloak_realm: "agent-realm"
-jwt_audiencepolicy: "agent-client"
-mcp_svc_name: "mcp-agent-control-plane"
+auth:
+  keycloak:
+    realm: "agent-realm"
+  jwt:
+    audience: "agent-client"
+
+controlPlane:
+  serviceName: "mcp-agent-control-plane"

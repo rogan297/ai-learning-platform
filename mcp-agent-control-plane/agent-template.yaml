@@ -22,5 +22,10 @@ spec:
           value: "8080"
         - name: AGENT_NAME
           value: "{{ name }}"
-        - name: OPENAI_API_KEY
+
+        - name: API_KEY
           value: "your-token"
+        - name: PROVIDER
+          value: "openai"
+        - name: MODEL
+          value: "gpt-4o-mini"

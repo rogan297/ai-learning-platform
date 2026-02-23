@@ -18,14 +18,14 @@ async def main():
         agent_card = json.load(f)
 
 
-    config = KAgentConfig(name=agent_card.get("name", "orchestrator-agent"))
+    config = KAgentConfig(name=agent_card.get("name", "template-agent"))
 
 
 
     async with get_db_resources() as pool:
         graph = await create_graph(pool)
 
-        app = KAgentApp(graph=graph, agent_card=agent_card, config=config, tracing=True)
+        app = KAgentApp(graph=graph, agent_card=agent_card, config=config, tracing=False)
 
         port = int(os.getenv("AGENT_PORT", "8080"))
         host = os.getenv("AGENT_HOST", "0.0.0.0")
