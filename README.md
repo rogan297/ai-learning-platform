@@ -57,6 +57,11 @@ kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/downloa
 helm upgrade --install keycloak ./keycloak -n keycloak --create-namespace
 
 # NOTE: You must manually create users and the Keycloak Realm.
+# Default configuration: 
+# username: agent
+# password: 1234
+# client_id: agent-client
+# audience: agent-client
 # Access the UI via port-forward:
 kubectl port-forward svc/keycloak -n keycloak 8080:8080
 
@@ -89,6 +94,11 @@ helm upgrade --install agentgateway ./agentgateway/agentgateway-install \
   --set auth.keycloak.realm="agent-realm" \
   --set auth.jwt.audience="agent-client" \
   --set controlPlane.serviceName="mcp-agent-control-plane"
+
+# Before upload the docker images, you have to set the api keys and providers to:
+nano agents/orchestrator/agent.yaml
+nano mcp-agent-control-plane/agent-template.yaml 
+
 
 # Build and Load Local Image (for Kind environments)
 docker compose build
