@@ -1,0 +1,60 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
+  <diagram id="RFddLWoRYIReh_Stf61x" name="Page-1">
+    <mxGraphModel dx="982" dy="581" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="main_container" value="Learning Agent (Topic-specific)" style="swimlane;whiteSpace=wrap;html=1;childLayout=stackLayout;horizontal=1;startSize=35;horizontalStack=0;rounded=1;fontSize=14;fontStyle=1;strokeColor=#B0BEC5;fillColor=#F8F9FA;arcSize=10;collapsible=0;separateZeros=0;" parent="1" vertex="1">
+          <mxGeometry x="220" y="40" width="400" height="660" as="geometry" />
+        </mxCell>
+        <mxCell id="step1" value="Generate Study Content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4A90E2;strokeWidth=2;fontSize=13;fontColor=#333333;" parent="main_container" vertex="1">
+          <mxGeometry x="75" y="60" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step2" value="Generate Quiz" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4A90E2;strokeWidth=2;fontSize=13;" parent="main_container" vertex="1">
+          <mxGeometry x="75" y="160" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step3" value="Deliver Content + Quiz" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4A90E2;strokeWidth=2;fontSize=13;" parent="main_container" vertex="1">
+          <mxGeometry x="75" y="260" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step4" value="Receive User Answers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4A90E2;strokeWidth=2;fontSize=13;" parent="main_container" vertex="1">
+          <mxGeometry x="75" y="360" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step5" value="Validate Answers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4A90E2;strokeWidth=2;fontSize=13;" parent="main_container" vertex="1">
+          <mxGeometry x="75" y="460" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step6" value="Improve Content &amp; Update Learning Plan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;fontSize=13;fontStyle=1;" parent="main_container" vertex="1">
+          <mxGeometry x="75" y="560" width="250" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#4A90E2;strokeWidth=1.5;" parent="main_container" source="step1" target="step2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#4A90E2;strokeWidth=1.5;" parent="main_container" source="step2" target="step3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#4A90E2;strokeWidth=1.5;" parent="main_container" source="step3" target="step4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#4A90E2;strokeWidth=1.5;" parent="main_container" source="step4" target="step5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#4A90E2;strokeWidth=1.5;" parent="main_container" source="step5" target="step6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="Feedback Loop" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#1976D2;strokeWidth=2;dashed=1;curved=1;fontSize=11;fontColor=#1976D2;" parent="1" source="step6" edge="1">
+          <mxGeometry x="0.8182" y="-150" relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="600" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="node_user" value="User" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#333333;fontColor=#ffffff;strokeColor=none;fontSize=12;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="60" y="335" width="70" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="e_user" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#666666;strokeWidth=1;dashed=1;" parent="1" source="node_user" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

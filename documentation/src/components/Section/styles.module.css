@@ -1,0 +1,36 @@
+.section {
+  padding: 6rem 0;
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+
+[data-theme='dark'] .section {
+  background-color: #0f172a; 
+  color: #f1f5f9;
+}
+
+[data-theme='light'] .section {
+  background-color: #ffffff;
+  color: #1a202c;
+}
+
+
+.section {
+  padding: 6rem 0;
+}
+
+.variantSection {
+  transition: background-color 0.3s ease;
+}
+
+
+[data-theme='light'] .variantSection {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+
+[data-theme='dark'] .variantSection {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
