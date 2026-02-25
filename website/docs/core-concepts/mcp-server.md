@@ -34,7 +34,7 @@ generates a Kubernetes YAML manifest for the agent based on the
 following template:
 
 
-{% raw %}
+
 ``` yaml
 apiVersion: kagent.dev/v1alpha2
 kind: Agent
@@ -67,7 +67,7 @@ spec:
         - name: MODEL
           value: "gpt-4o-mini"
 ```
-{% endraw %}
+
 
 
 After generating the YAML definition, the tool uses:
