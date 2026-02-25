@@ -58,6 +58,7 @@ helm upgrade --install keycloak ./keycloak -n keycloak --create-namespace
 
 # NOTE: You must manually create users and the Keycloak Realm.
 # Default configuration: 
+# keycloak realm: agent-realm
 # username: agent
 # password: 1234
 # client_id: agent-client
