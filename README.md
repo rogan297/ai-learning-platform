@@ -6,6 +6,8 @@ Each agent is designed to deliver structured content, generate exercises, provid
 
 By leveraging a multi-agent architecture and continuous personalization, the platform creates a scalable and evolving educational environment tailored to each individual learner.
 
+
+Explore the live platform and technical updates here: [Link](https://rogan297.github.io/ai-learning-platform/blog)
 ---
 
 ## Prerequisites
