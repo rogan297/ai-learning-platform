@@ -13,12 +13,10 @@ By leveraging a multi-agent architecture and continuous personalization, the pla
 Explore the full platform here:  
 👉 https://rogan297.github.io/ai-learning-platform/
 
-This is the main entry point where you can interact with the system and understand how the adaptive agents work in practice.
-
 ---
 ## 📝 Blog  
 
-Read updates, insights, and technical explanations here:  
+Read my blog post here:  
 👉 https://rogan297.github.io/ai-learning-platform/blog
 
 ---
