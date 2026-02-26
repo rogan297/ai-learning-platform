@@ -7,9 +7,22 @@ Each agent is designed to deliver structured content, generate exercises, provid
 By leveraging a multi-agent architecture and continuous personalization, the platform creates a scalable and evolving educational environment tailored to each individual learner.
 
 
-[Explore the IA Learning Platform Blog](https://rogan297.github.io/ai-learning-platform/blog)
+---
+## 🌐 Live Website  
+
+Explore the full platform here:  
+👉 https://rogan297.github.io/ai-learning-platform/
+
+This is the main entry point where you can interact with the system and understand how the adaptive agents work in practice.
 
 ---
+## 📝 Blog  
+
+Read updates, insights, and technical explanations here:  
+👉 https://rogan297.github.io/ai-learning-platform/blog
+
+---
+
 
 ## Prerequisites
 
