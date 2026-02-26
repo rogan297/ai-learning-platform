@@ -20,7 +20,15 @@ export default function HomepageHero() {
           Deploy governed, scalable, and secure intelligent agents 
           that evolve alongside each learner — powered by KAgent and KMCP.
         </p>
-
+        <iframe
+          width="100%"
+          height="450"
+          src="https://www.youtube.com/embed/C-1tWim-4tc"
+          title="How to install the AI Learning platform"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
         <div className="margin-top--lg">
           <Link
             className="button button--primary button--lg"
